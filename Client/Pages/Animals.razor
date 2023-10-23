@@ -1,0 +1,134 @@
+﻿@page "/animals"
+@using STGeneticsTechTestLeonardoMosquera.Shared.Models
+@inject HttpClient http
+@inject IJSRuntime jsRuntime
+<PageTitle>Animals</PageTitle>
+<h3>Animals</h3>
+
+<div>
+    <a class="btn btn-primary" href="/animal/add">Add Animal</a>
+    <lanbel>Filter</lanbel>
+    <input type="text" placeholder="You can search by all fields here" @bind="searchText" @bind:event="oninput" @onkeyup="async () => await Search()" />
+    <table class="table table-bordered table-responsive-sm mt-5">
+
+        <thead>
+            <tr>
+            
+                <th>Name</th>
+                <th>Breed</th>
+                <th>BirthDate</th>
+                <th>Sex</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        @if (animalData != null && animalData.Animals != null)
+        {
+            @foreach (var animal in animalData.Animals)
+            {
+                <tbody>
+                    <tr>
+                        
+                        <td>@animal.Name</td>
+                        <td>@animal.Breed</td>
+                        <td>@animal.GetFormatedBirthDate()</td>
+                        <td>@animal.Sex</td>
+                        <td>@animal.GetFormatedPrice()</td>
+                        <td>@animal.Status</td>
+                        <td>
+                            <a href="/animal/update/@animal.Id" class="btn btn-success">Edit</a>
+                            <a @onclick="async ()=> await DeleteAnimal(animal)" class="btn btn-danger">Delete</a>
+                            <input type="checkbox" @bind="@animal.Selected" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            }
+
+
+        }
+        else
+        {
+            <tbody>
+                <tr>
+                    <td colspan="7">No animals found.</td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <nav aria-label="Animals pagination">
+        <ul class="pagination">
+            @if (animalData != null && animalData.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a @onclick="async ()=> await GetAnimals(animalData.CurrentPage-1)" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            @for (int i = 1; animalData != null && i <= animalData.ToatalPages; i++)
+            {
+
+                string activeCLass = (i == animalData.CurrentPage) ? "active" : "";
+                int count = i;
+                <li class="page-item"><a @onclick="async ()=> await GetAnimals(count)" class="page-link @activeCLass">@count</a></li>
+
+            }
+
+
+            @if (animalData != null && animalData.CurrentPage < animalData.ToatalPages)
+            {
+                <li class="page-item">
+                    <a @onclick="async ()=> await GetAnimals(animalData.CurrentPage+1)" class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+
+</div>
+
+@code {
+
+    private AnimalList animalData = new AnimalList();
+    private string searchText = string.Empty;
+
+    private async Task Search()
+    {
+
+        animalData.SearchTerm = searchText;
+        GetAnimals();
+
+    }
+
+
+    private async Task DeleteAnimal(Animal animal)
+    {
+        bool confirm = await jsRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete {animal.Name}?");
+        if (confirm)
+        {
+            var result = await http.DeleteFromJsonAsync<Status> ($"api/animal/delete/{animal.Id}");
+            if (result.StatusCode == 1)
+                await GetAnimals();
+          
+
+
+        }
+
+    }
+
+    private async Task GetAnimals(int pageNum = 1)
+    {
+        animalData = await http.GetFromJsonAsync<AnimalList>($"api/animal/getall?sTerm={searchText}&pageNum={pageNum}");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetAnimals();
+    }
+
+   
+}

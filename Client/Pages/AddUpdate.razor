@@ -1,0 +1,81 @@
+﻿@page "/animal/add"
+@page "/animal/update/{id:int}"
+@using STGeneticsTechTestLeonardoMosquera.Shared.Models
+@inject HttpClient http
+<PageTitle>@Title</PageTitle>
+
+<h3>@Title</h3>
+<div class="mb-1 col-sm-3">
+    <a class="btn btn-primary" href="/animals">Return</a>
+
+    <EditForm  class="mt-3" Model="@animal" OnValidSubmit="Save">
+        <DataAnnotationsValidator />
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="Name">Name</label>
+            <InputText class="form-control" id="Name" @bind-Value="animal.Name" />
+            <ValidationMessage For="@(() => animal.Name)" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="Breed">Breed</label>
+            <InputText class="form-control" id="Breed" @bind-Value="animal.Breed" />
+            <ValidationMessage For="@(() => animal.Breed)" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="BirthDate">BirthDate</label>
+            <InputDate class="form-control" id="BirthDate" @bind-Value="animal.BirthDate" />
+            <ValidationMessage For="@(() => animal.BirthDate)" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="Sex">Sex</label>
+            <InputText class="form-control" id="Sex" @bind-Value="animal.Sex" />
+            <ValidationMessage For="@(() => animal.Sex)" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="Price">Price</label>
+            <InputNumber class="form-control" id="Price" @bind-Value="animal.Price" />
+            <ValidationMessage For="@(() => animal.Price)" />
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="Status">Status</label>
+            <InputText class="form-control" id="Status" @bind-Value="animal.Status" />
+            <ValidationMessage For="@(() => animal.Status)" />
+        </div>
+
+        <div>
+            @status.Message;
+        </div>
+
+        <div>
+            <button class="btn btn-success" type="submit">Save</button>
+        </div>
+    </EditForm>
+
+</div>
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+    private string Title = "Add Animal";
+
+    Animal animal = new();
+    Status status = new();
+
+    private async Task Save ()
+    {
+        var response = await http.PostAsJsonAsync("api/animal/addupdate", animal);
+        var data = await  response.Content.ReadFromJsonAsync<Status>();
+        status = data;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != 0)
+        {
+            Title = "Update Animal";
+            animal = await http.GetFromJsonAsync<Animal>($"api/animal/getbyid/{Id}");
+        }
+    }
+
+
+}

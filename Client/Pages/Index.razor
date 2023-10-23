@@ -1,0 +1,23 @@
+﻿@page "/"
+@using STGeneticsTechTestLeonardoMosquera.Shared.Models
+@inject HttpClient http
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hi, i'm Leoanrdo it's my technical test for ST Genetics</h1>
+
+
+@code {
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+      
+            var response = await http.PostAsync("api/animal/AddInitialDataIfEmpty", null);
+        
+
+    }
+}

@@ -1,0 +1,182 @@
+﻿[
+  {
+    "AnimalId": "1",
+    "Name": "Bessie",
+    "Breed": "Holstein",
+    "BirthDate": "2018-05-12",
+    "Sex": "Female",
+    "Price": "2500",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "2",
+    "Name": "Moo",
+    "Breed": "Angus",
+    "BirthDate": "2017-09-23",
+    "Sex": "Male",
+    "Price": "3000",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "3",
+    "Name": "Daisy",
+    "Breed": "Hereford",
+    "BirthDate": "2019-02-07",
+    "Sex": "Female",
+    "Price": "2800",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "4",
+    "Name": "Charlie",
+    "Breed": "Jersey",
+    "BirthDate": "2016-11-14",
+    "Sex": "Male",
+    "Price": "2200",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "5",
+    "Name": "Luna",
+    "Breed": "Gelbvieh",
+    "BirthDate": "2017-07-30",
+    "Sex": "Female",
+    "Price": "2700",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "6",
+    "Name": "Max",
+    "Breed": "Simmental",
+    "BirthDate": "2018-03-18",
+    "Sex": "Male",
+    "Price": "2900",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "7",
+    "Name": "Molly",
+    "Breed": "Charolais",
+    "BirthDate": "2019-09-05",
+    "Sex": "Female",
+    "Price": "2600",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "8",
+    "Name": "Rocky",
+    "Breed": "Limousin",
+    "BirthDate": "2017-12-22",
+    "Sex": "Male",
+    "Price": "2400",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "9",
+    "Name": "Rosie",
+    "Breed": "Red Angus",
+    "BirthDate": "2016-10-10",
+    "Sex": "Female",
+    "Price": "2300",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "10",
+    "Name": "Sam",
+    "Breed": "Hereford",
+    "BirthDate": "2018-06-26",
+    "Sex": "Male",
+    "Price": "2800",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "11",
+    "Name": "Lucy",
+    "Breed": "Holstein",
+    "BirthDate": "2017-02-11",
+    "Sex": "Female",
+    "Price": "2500",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "12",
+    "Name": "Oscar",
+    "Breed": "Angus",
+    "BirthDate": "2016-08-17",
+    "Sex": "Male",
+    "Price": "3000",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "13",
+    "Name": "Penny",
+    "Breed": "Gelbvieh",
+    "BirthDate": "2018-04-02",
+    "Sex": "Female",
+    "Price": "2700",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "14",
+    "Name": "Toby",
+    "Breed": "Simmental",
+    "BirthDate": "2019-10-19",
+    "Sex": "Male",
+    "Price": "2900",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "15",
+    "Name": "Lola",
+    "Breed": "Jersey",
+    "BirthDate": "2017-06-05",
+    "Sex": "Female",
+    "Price": "2200",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "16",
+    "Name": "Buddy",
+    "Breed": "Charolais",
+    "BirthDate": "2016-01-21",
+    "Sex": "Male",
+    "Price": "2600",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "17",
+    "Name": "Coco",
+    "Breed": "Limousin",
+    "BirthDate": "2018-07-07",
+    "Sex": "Female",
+    "Price": "2400",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "18",
+    "Name": "Leo",
+    "Breed": "Red Angus",
+    "BirthDate": "2017-03-24",
+    "Sex": "Male",
+    "Price": "2300",
+    "Status": "Inactive"
+  },
+  {
+    "AnimalId": "19",
+    "Name": "Sadie",
+    "Breed": "Hereford",
+    "BirthDate": "2016-09-09",
+    "Sex": "Female",
+    "Price": "2800",
+    "Status": "Active"
+  },
+  {
+    "AnimalId": "20",
+    "Name": "Milo",
+    "Breed": "Holstein",
+    "BirthDate": "2018-11-25",
+    "Sex": "Male",
+    "Price": "2500",
+    "Status": "Active"
+  }
+]
