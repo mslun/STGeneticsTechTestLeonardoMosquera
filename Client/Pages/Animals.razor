@@ -13,7 +13,7 @@
 
         <thead>
             <tr>
-            
+
                 <th>Name</th>
                 <th>Breed</th>
                 <th>BirthDate</th>
@@ -29,7 +29,7 @@
             {
                 <tbody>
                     <tr>
-                        
+
                         <td>@animal.Name</td>
                         <td>@animal.Breed</td>
                         <td>@animal.GetFormatedBirthDate()</td>
@@ -44,6 +44,8 @@
                     </tr>
 
                 </tbody>
+
+
             }
 
 
@@ -88,13 +90,14 @@
 
         </ul>
     </nav>
-
+    <p> The sum of all animals prices is: @sumPrices </p>
 </div>
 
 @code {
 
     private AnimalList animalData = new AnimalList();
     private string searchText = string.Empty;
+    private decimal? sumPrices = 0;
 
     private async Task Search()
     {
@@ -110,10 +113,10 @@
         bool confirm = await jsRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete {animal.Name}?");
         if (confirm)
         {
-            var result = await http.DeleteFromJsonAsync<Status> ($"api/animal/delete/{animal.Id}");
+            var result = await http.DeleteFromJsonAsync<Status>($"api/animal/delete/{animal.Id}");
             if (result.StatusCode == 1)
                 await GetAnimals();
-          
+
 
 
         }
@@ -128,7 +131,23 @@
     protected override async Task OnInitializedAsync()
     {
         await GetAnimals();
+        SumPrices();
     }
 
-   
+    private void SumPrices()
+    {
+
+
+        if (animalData != null && animalData.Animals != null)
+        {
+            sumPrices = animalData.Animals.Sum(x => x.Price);
+        }
+
+        
+
+    }
+
+
 }
+
+
