@@ -4,4 +4,4 @@
  - .Net 7
  - Blazor
  - EntityFramework 7
- - SQL Server
+ - SQL Server (local instance)
