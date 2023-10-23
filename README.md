@@ -1,3 +1,7 @@
 # STGeneticsTechTestLeonardoMosquera
 
-## Using .net 7 app with Blazor and EntityFramework 7
+## Proyect built using
+ - .Net 7
+ - Blazor
+ - EntityFramework 7
+ - SQL Server
